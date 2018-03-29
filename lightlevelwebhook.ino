@@ -1,7 +1,10 @@
 char published_value[5];
+int light_level;
 
 void setup() {
     pinMode(A0, INPUT);
+
+    Particle.variable("light_level", light_level);
     
     //Note that, as per the Particle code examples, we use
     //an analog pin (in output mode with digitalWrite) to make
@@ -13,7 +16,7 @@ void setup() {
 
 void loop() {
   
-  int light_level = analogRead(A0);
+  light_level = analogRead(A0);
   //Convert the analog value to a format Particle.publish can use...
   sprintf(published_value, "%d", light_level);
   
@@ -24,5 +27,5 @@ void loop() {
   digitalWrite(D7, HIGH);
   delay(2000);
   digitalWrite(D7, LOW);
-  delay(28000);
+  delay(58000);
 }
